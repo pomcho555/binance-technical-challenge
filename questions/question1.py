@@ -28,7 +28,7 @@ def fetch_all_symbols(quote_asset: str = None) -> list:
 
 
 def fetch_top5_volume_symbols_with_specific_quote_asset(quote_asset: str) -> list:
-    """Fetch exchange info by specific quote asset
+    """Fetch top5 the highest volume symbols with specific quote asset.
 
     Args:
         quote_asset (str): Specify a quote asset such as BTC.

@@ -1,4 +1,4 @@
-from questions.question1.question1 import (
+from questions.question1 import (
     fetch_all_symbols,
     fetch_top5_volume_symbols_with_specific_quote_asset,
 )
