@@ -11,5 +11,5 @@ def fetch_top5_volume_symbols_with_specific_quote_asset() -> list:
 
 
 def print_answer():
-    print("====Q2 ANSWER====")
+    print("====Q1 ANSWER====")
     print(fetch_top5_volume_symbols_with_specific_quote_asset())
