@@ -15,7 +15,11 @@ def test_fetch_all_symbols(test_quote_asset):
     assert result[0][-len(test_quote_asset) :] == test_quote_asset  # noqa
 
 
-def test_fetch_top5_symbols_with_specific_quote_asset():
-    result = fetch_top5_symbols_with_specific_quote_asset("USDT", "count")
+@pytest.mark.parametrize(
+    ("quote_asset", "field"),
+    [("BTC", "volume"), ("USDT", "count")],
+)
+def test_fetch_top5_symbols_with_specific_quote_asset(quote_asset, field):
+    result = fetch_top5_symbols_with_specific_quote_asset(quote_asset, field)
     assert type(result[0]) == str
     assert len(result) == 5
