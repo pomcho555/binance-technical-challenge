@@ -11,7 +11,7 @@ client = Client(base_url=Config.get("API", "BaseUrl"))
 
 
 def get_total_notional_value_top_200_transaction() -> dict:
-    """_summary_
+    """Get the total notional value of the top 200 bids and asks currently on each order book.
 
     Returns:
         dict: Total notional values each symbols
@@ -39,5 +39,5 @@ def get_total_notional_value_top_200_transaction() -> dict:
 
 
 def print_answer():
-    print("Q3 ANSWER:")
+    print("====Q3 ANSWER====")
     print(get_total_notional_value_top_200_transaction())
