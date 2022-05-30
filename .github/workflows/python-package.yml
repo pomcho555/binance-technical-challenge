@@ -34,10 +34,13 @@ jobs:
     - name: Poetry Install Dependencies
       run: |
         poetry install --no-interaction
+    - name: Run black to review standard code format
+      run: |
+        # Checks if need to reformat files
+        black --check --diff .
+    - name: Run flake8 to check specific rules not covered by black
+      run: |
+        flake8 . --statistics
     - name: Test with pytest
       run: |
         poetry run pytest
-    - name: Lint with flake8
-      run: |
-        poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
