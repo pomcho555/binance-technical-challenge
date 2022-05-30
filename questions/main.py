@@ -7,6 +7,7 @@ from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
 from prometheus_client import Gauge, generate_latest
 
+from questions.question2 import fetch_top5_trades_symbols_with_specific_quote_asset
 from questions.question5 import print_spread_each_symbol
 
 app = FastAPI()
@@ -19,12 +20,13 @@ SPREADS_GAUGE = Gauge("spreads_10s", "Description of gauge", ["symbol", "filed"]
 
 
 def scheduler():
+    target_symbols = fetch_top5_trades_symbols_with_specific_quote_asset()
     # create instances each symbols
     base_timing = datetime.now()
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         while True:
-            future = executor.submit(print_spread_each_symbol)  # noqa
+            future = executor.submit(print_spread_each_symbol, target_symbols)  # noqa
             current_timing = datetime.now()
             elapsed_sec = (current_timing - base_timing).total_seconds()
             sleep_sec = INTERVAL - (elapsed_sec % INTERVAL)
