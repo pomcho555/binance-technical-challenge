@@ -1,0 +1,60 @@
+import logging
+import time
+from concurrent.futures import ThreadPoolExecutor
+from dataclasses import dataclass
+from datetime import datetime
+
+from questions.question4 import get_spread_each_symbols
+
+logging.basicConfig()
+logger = logging.getLogger(__name__)
+
+INTERVAL = 10
+MAX_WORKERS = 2
+
+previous_spreads = {}
+
+
+@dataclass
+class Spread:
+    symbol: str
+    spread: float
+    previous_spread: float = 0.0
+    delta: float = 0.0
+
+    def calculate_delta(self):
+        self.delta = abs(self.spread - self.previous_spread)
+        self.previous_spread = self.spread
+
+
+def print_spread_each_symbol():
+    spreads = get_spread_each_symbols()
+    output = {s: {"spread": spreads[s], "delta": 0} for s in spreads.keys()}
+    for s in spreads:
+        if s not in previous_spreads:
+            previous_spreads[s] = 0.0
+        output[s]["delta"] = abs(previous_spreads[s] - spreads[s])
+        previous_spreads[s] = spreads[s]
+
+    print(output)
+    return output
+
+
+def scheduler():
+    # create instances each symbols
+    base_timing = datetime.now()
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        while True:
+            future = executor.submit(print_spread_each_symbol)  # noqa
+            current_timing = datetime.now()
+            elapsed_sec = (current_timing - base_timing).total_seconds()
+            sleep_sec = INTERVAL - (elapsed_sec % INTERVAL)
+            logger.info(f"Collecting timestamp: {current_timing}")
+            time.sleep(max(sleep_sec, 0))
+
+
+def print_answer():
+    print("====Q5 ANSWER====")
+    print("Stop a metrics emitting every 10 seconds with Ctrl+CEmit.")
+    scheduler()
