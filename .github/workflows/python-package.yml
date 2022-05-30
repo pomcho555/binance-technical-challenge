@@ -39,7 +39,7 @@ jobs:
           poetry run black --check --diff .
       - name: Run flake8 to check specific rules not covered by black
         run: |
-          poetry run flake8 . --statistics
+          poetry run flake8 . --statistics --ignore=E501
       - name: Test with pytest
         run: |
           poetry run pytest
