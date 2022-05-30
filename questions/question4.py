@@ -32,7 +32,7 @@ def get_spread_each_symbols(symbols: list) -> dict:
 def get_q4_result():
     # Fetch q2 result
     question2_symbols = fetch_top5_trades_symbols_with_specific_quote_asset()
-    get_spread_each_symbols(question2_symbols)
+    return get_spread_each_symbols(question2_symbols)
 
 
 def print_answer():
