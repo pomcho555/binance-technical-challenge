@@ -8,6 +8,9 @@ authors = ["pomcho555 <ono.fda03@gmail.com>"]
 python = "^3.10"
 requests = "^2.27.1"
 binance-connector = "^1.13.0"
+fastapi = "^0.78.0"
+uvicorn = {extras = ["standard"], version = "^0.17.6"}
+prometheus-client = "^0.14.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"
