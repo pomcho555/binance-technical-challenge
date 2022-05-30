@@ -1,4 +1,7 @@
 # binance-technical-challenge
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+<!-- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/pomcho555/binance-technical-challenge/python-package.yaml) -->
+
 Technical Challenge
 
 ## Set up
@@ -17,6 +20,8 @@ poetry run python run_answer.py
 
 ### Q6
 
+See [this section](#run-metrics-server-for-prometheus).
+
 ## Run test
 ```sh
 poetry run pytest \
@@ -25,8 +30,6 @@ poetry run pytest \
   -v ./tests/* \
   --cov-report=html
 ```
-
-
 
 
 ## Run metrics server for Prometheus
