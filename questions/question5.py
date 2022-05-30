@@ -27,7 +27,14 @@ class Spread:
         self.previous_spread = self.spread
 
 
-def print_spread_each_symbol():
+def print_spread_each_symbol() -> dict:
+    """Print a spread and delta on each symbol.
+
+    Returns:
+        dict: Return output
+            e.g. {'BTCUSDT': {'spread': 0.010000000002037268, 'delta': 0.010000000002037268},..}
+    """
+
     spreads = get_spread_each_symbols()
     output = {s: {"spread": spreads[s], "delta": 0} for s in spreads.keys()}
     for s in spreads:
