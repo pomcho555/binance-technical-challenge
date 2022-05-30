@@ -6,7 +6,6 @@ from questions.question5 import print_spread_each_symbol
 def test_print_spread_each_symbol():
     previous_spreads = defaultdict()
     result = print_spread_each_symbol()
-    # print(result)
     for s in result:
         assert len(result) == 5
         assert type(result[s]["spread"]) == float
