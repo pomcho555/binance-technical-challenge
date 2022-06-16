@@ -1,5 +1,4 @@
 import configparser
-import contextlib
 
 from binance.spot import Spot as Client
 
