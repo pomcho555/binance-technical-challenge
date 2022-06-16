@@ -1,5 +1,5 @@
 # binance-technical-challenge
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![codecov](https://codecov.io/gh/pomcho555/binance-technical-challenge/branch/main/graph/badge.svg?token=QREKCWV52R)](https://codecov.io/gh/pomcho555/binance-technical-challenge)
 <!-- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/pomcho555/binance-technical-challenge/python-package.yaml) -->
 
 Technical Challenge
