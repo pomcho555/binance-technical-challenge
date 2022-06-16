@@ -21,11 +21,16 @@ def get_spread_each_symbols(symbols: list) -> dict:
         dict: the key value pair of symbol and spread.
             e.g. {'BTCUSDT': 0.00999999999839929, ... }
     """
-    result = client.ticker_24hr(symbols=symbols)
+    results = [client.depth(symbol=s, limit=1) for s in symbols]
     spreads = {}
-    for s in result:
-        spreads[s["symbol"]] = abs(float(s["bidPrice"]) - float(s["askPrice"]))
+    for s, r in zip(symbols, results):
 
+        try:
+            spreads[s] = abs(float(r["bids"][0][0]) - float(r["asks"][0][0]))
+        except IndexError:
+            # Sometimes, there is no response from depth API.
+            # USTUSDT {'lastUpdateId': 63603045, 'bids': [], 'asks': []}
+            spreads[s] = 0.0
     return spreads
 
 

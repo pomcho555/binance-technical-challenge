@@ -15,7 +15,7 @@ poetry install
 
 ### Only Q1~Q5
 ```sh
-poetry run python run_answer.py
+poetry run python run_answers.py
 ```
 
 ### Q6
